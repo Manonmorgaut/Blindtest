@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blind test</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./game.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <div id="category-name">
+        <p>Disco</p>
+      </div>
+      <div id="level">
+        <p>Level 1</p>
+      </div>
+    </header>
+    <div id="timerOutput">0</div>
+    <div id="player">
+      <audio id="audio-player" controls autoplay>
+        <source src="/Songs/beyonce-crazy-in-love-ft-jay-z.mp3"" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <form action="">
+      <div class="input-fields">
+        <div class="type-in">
+          <label for="answer"></label>
+          <input
+            id="answer"
+            type="text"
+            placeholder="Title and/or artist of the song "
+          />
+          <button id="submit-button" type="submit" value="OK">OK</button>
+        </div>
+      </div>
+    </form>
+    <div id="result"></div>
+    <section id="articles">
+      <article id="playlist">
+        <h1>Just listened to</h1>
+        <!-- <p id="list-of-songs"></p> -->
+      </article>
+      <article id="points">
+        <h1>Points</h1>
+        <p id="point-count"></p>
+      </article>
+    </section>
+  </body>
+</html>
