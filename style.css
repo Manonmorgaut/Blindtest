@@ -37,18 +37,21 @@ header div {
 #level {
   background-color: #e1e6f4;
 }
+.red {
+  background-color:red;
+}
 
-#level .level1{
+.level1{
   background-color: #e1e6f4;
 }
 
-#level .level2 {
+.level2 {
   background-color: #869cd5
 }
-#level .level3 {
+.level3 {
   background-color: #3A59A6
 }
-#level .level4 {
+.level4 {
   background-color: #304988
 }
 
@@ -61,18 +64,10 @@ header div {
   font-size:50px;
   color: #d81159;
 }
-/* 
-#lives {
-  background-color:red;
+/* .fa-heart {
+  width:100px;
   height:100px;
 } */
-
-/* ??WHY IS THE FOLLOWING NOT SHOWING */
-.fa-heart{
-  color:white;
-  padding:2px;
-  margin:10px;
-}
 
 .type-in {
   display: flex;
@@ -239,7 +234,82 @@ hint {
   font-weight:200;
   width:600px;
   padding:8px;
-  /* margin-left:375px; */
+  margin-left:375px;
   border-radius: 3px;
   opacity:0.5;
+}
+
+#gameover {
+  background-color:#d81159;
+  color:#FFEBE7;
+  font-size:200px;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  z-index:9;
+  padding-top:500px;
+  display:none;
+}
+
+#past-song {
+  margin-bottom:10px;
+}
+
+@keyframes moveBox {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-30px, 0);
+  }
+  20% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(-30px, 0);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-30px, 0);
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(-30px, 0);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+  90% {
+    transform: translate(-30px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.is-moving {
+  animation: 0.5s linear 0s alternate moveBox;
+  animation-duration:1s;
+}
+
+@keyframes changeSize {
+  from {
+    transform: (0deg);
+    transform: z
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.is-changing-size {
+  animation: 0.5s linear 0s alternate changeSize;
+  animation-duration:1s;
+
 }

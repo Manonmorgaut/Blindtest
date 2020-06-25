@@ -7,22 +7,23 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.1/qs.min.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
     <script src="./game.js" type="module"></script>
+    <!-- <script src="./main.js" type="module"></script> -->
   </head>
   <body>
     <header>
       <div id="category-name">
-        <p>Disco</p>
+        <p>Rock classics</p>
       </div>
       <div id="level">
         <p>Level 1</p>
       </div>
     </header>
+    <div id="gameover">GAME OVER</div>
     <div id="lives">
-      <i class="fa fa-heart fa-2x"></i>
-      <i class="fa fa-heart fa-2x"></i>
-      <i class="fa fa-heart fa-2x"></i>
-      <i class="fa fa-heart fa-2x"></i>
+      <!-- ?? The following is not showing at all -->
+      <i class="fas fa-heart"></i>
     </div>
     <div id="timerOutput"></div>
     <div id="player">
@@ -31,6 +32,7 @@
         Your browser does not support the audio element.
       </audio>
     </div>
+    <!-- <div id="timerbar"> </div> -->
     <form action="">
       <div class="input-fields">
         <div class="type-in">
@@ -45,7 +47,7 @@
       </div>
     </form>
     <div id="results">
-      <p id="result"></p>
+      <p id="result">Only do what your heart tells you.</p>
     </div>
     <section id="articles">
       <article id="playlist">
