@@ -1,28 +1,30 @@
-// ?? The following is not working:why?
-// import {songArray} from "./Songs-array";
+// import { Timer } from "./timer-class.js";
+// import { songArray } from "./arrays.js";
+// import { levels } from "./arrays.js";
+// import { pageLoader } from "./pageloader.js";
 
-// This is not working, trying to import specific playlist based on their URI
-// https://developer.spotify.com/console/get-playlist/?playlist_id=59ZbFPES4DQwEjBpWHzrtC&user_id=spotify&fields=fields%3Dhref%2Cname%2Cowner%28%21href%2Cexternal_urls%29%2Ctracks.items%28added_by.id%2Ctrack%28name%2Chref%2Calbum%28name%2Chref%29%29%29
+// const main= document.getElementById("main");
 
-// axios
-//     .get("/https://api.spotify.com/v1/playlists/spotify%3Aplaylist%3A4Kz5uKF1j61cAgvrJVlKhr?market=ES&fields=items(added_by.id%2Ctrack(name%2Chref%2Calbum(name%2Chref)))")
-//     .then((response) => {
-//       console.log(response)
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     });
-
-// Initialize classes
 class Timer {
   constructor(gameDuration) {
     this.currentTime = gameDuration;
-    this.intervalId = 0;
+    this.intervalId = null;
   }
-  startTimer(callback) {
+  startTimer(callback, callback2,callback3) {
     this.intervalId = setInterval(() => {
-      for (let i = gameDuration; i > 0; i--) {
-        console.log(i);
+      console.log(this.currentTime);
+      this.currentTime--;
+      callback();
+      if (this.currentTime === 0) 
+      {
+        if (level === levels.length-1) 
+        {
+          this.stopTimer();
+          console.log("endofgame");
+          callback3();
+        }
+        else {this.stopTimer();
+        callback2();}
       }
     }, 1000);
   }
@@ -33,37 +35,66 @@ class Timer {
     return this.currentTime % 60;
   }
   twoDigitsNumber(number) {
-    if (number < 10) return (number = `0${number}`);
+    if (number < 10) return `0${number}`
+    else return number;
   }
   stopTimer() {
     clearInterval(this.intervalId);
   }
-  resetTimer() {
-    this.currentTime = gameDuration;
+  resetTimer(newDuration) {
+    this.currentTime = newDuration;
   }
 }
-// Initialize arrays
+
 const songArray = [
   {
-    title: "711",
-    artist: "Beyonce",
-    linktosong: "/beyonce-711.mp3",
+    title: "Smells like teen spirit",
+    artist: "Nirvana",
+    // linktosong: "./Songs/nirvana-smells-like-teen-spirit-official-music-video.mp3",
+    linktovideoclip: "./Video clips/nirvana-smells-like-teen-spirit-official-music-video.mp4",
   },
   {
-    title: "Crazy in love",
-    artist: "Test",
-    linktosong: "/beyonce-crazy-in-love-ft-jay-z.mp3",
+    title: "Californication",
+    artist: "Red hot chili peppers",
+    // linktosong: "./Songs/red-hot-chili-peppers-californication-official-music-video.mp3",
+    linktovideoclip: "./Video clips/red-hot-chili-peppers-californication-official-music-video.mp4",
   },
   {
-    title: "Who run the world girls",
-    artist: "Beyonce",
-    linktosong: "/beyonce-run-the-world-girls-video-main-version.mp3",
+    title: "The house of the rising sun",
+    artist: "The animals",
+    // linktosong: "./Songs/the-animals-the-house-of-the-rising-sun-1964-high-quality.mp3",
+    linktovideoclip: "./Video clips/the-animals-the-house-of-the-rising-sun-1964-high-quality.mp4",
   },
   {
-    title: "Single ladies",
-    artist: "Beyonce",
-    linktosong: "/beyonce-single-ladies-put-a-ring-on-it-video-version.mp3",
+    title: "Sultans of swing",
+    artist: "Dire straits",
+    // linktosong: "./Songs/sultans-of-swing.mp3",
+    linktovideoclip: "./Video clips/dire-straits-sultans-of-swing.mp4",
   },
+  {
+    title: "Start me up",
+    artist: "Rolling stones",
+    // linktosong: "./Songs/the-rolling-stones-start-me-up-official-promo.mp3",
+    linktovideoclip: "./Video clips/the-rolling-stones-start-me-up-official-promo.mp4",
+  },
+  {
+    title: "London calling",
+    artist: "The clash",
+    // linktosong: "./Songs/the-clash-london-calling-official-video.mp3",
+    linktovideoclip: "./Video clips/the-clash-london-calling-official-video.mp4",
+  },
+  {
+    title: "Don't stop believin",
+    artist: "The journey",
+    // linktosong: "./Songs/journey-dont-stop-believin-audio.mp3",
+    linktovideoclip: "./Video clips/journey-dont-stop-believin-live-in-houston.mp4",
+  },
+  {
+    title: "Rich girls",
+    artist: "The virgin",
+    // linktosong: "./Songs/the-virgins-rich-girls-official-video.mp3",
+    linktovideoclip: "./Video clips/the-virgins-rich-girls-official-video.mp4",
+  }
 ];
 
 const levels = [
@@ -72,7 +103,7 @@ const levels = [
     levelName: "",
     color: "blue",
     autoplayDuration: 20000,
-    gameTime: 90000,
+    gameTime: 10,
     textHint: true,
     videoHint: true,
     nbOfLives: 4,
@@ -82,7 +113,7 @@ const levels = [
     levelName: "",
     color: "green",
     autoplayDuration: 10000,
-    gameTime: 60000,
+    gameTime: 10,
     textHint: false,
     videoHint: true,
     nbOfLives: 3,
@@ -92,7 +123,7 @@ const levels = [
     levelName: "",
     color: "pink",
     autoplayDuration: 5000,
-    gameTime: 30000,
+    gameTime: 10,
     textHint: false,
     videoHint: false,
     nbOfLives: 2,
@@ -110,14 +141,22 @@ const categoryHeader = document.getElementById("category-name");
 const timerOutput = document.getElementById("timerOutput");
 const playlist = document.getElementById("playlist");
 const listOfSongs = document.getElementById("list-of-songs");
+const letterHintBtn = document.getElementById("letter-hint-button");
+const videoHintBtn = document.getElementById("video-hint-button");
+const letterHint = document.getElementById("letter-hint");
+const videoHint = document.getElementById("video-hint");
+const videoPlayer = document.getElementById("video-player");
+const lives = document.getElementById("lives");
+const totalPoints = document.getElementById("total-points");
+const results = document.getElementById("results");
 
 var index = 0;
 var nbOfPoints = 0;
-var level = 1;
-var levelAutoplayDuration = 20000;
-var gameDuration = levels[level - 1].gameTime;
+var level = 0;
+var nbOfLives = levels[level].nbOfLives;
+var levelAutoplayDuration = levels[level].autoplayDuration;
+var gameDuration = levels[level].gameTime;
 const timer = new Timer(gameDuration);
-// var timer = new Timer();
 
 function printTime() {
   let minutes = timer.getMinutes();
@@ -125,8 +164,18 @@ function printTime() {
   minutes = timer.twoDigitsNumber(minutes);
   seconds = timer.twoDigitsNumber(seconds);
   console.log(minutes, seconds);
-  timerOutput.innerHTML = `${minutes}:${seconds}`;
+  timerOutput.innerHTML = `<p id="timer">Time left: ${minutes}:${seconds}!</p>`;
 }
+
+// Define the function that starts the timer
+
+function startGame(arr) {
+  const song = arr[index];
+  timer.startTimer(printTime, goToNextLevel,goToResultsPage);
+  audioPlayer.src = `${song.linktosong}`;
+}
+
+startGame(songArray);
 
 // Function that limits the duration of the music being played to 15 seconds
 
@@ -139,26 +188,22 @@ setTimeout(function () {
   }, levelAutoplayDuration);
 }, 1000);
 
-// Define the function that starts the timer
-
-function startGame() {
-  timer.startTimer(printTime());
-}
-
 // Define the function that goes to the next song
 function nextSong(arr) {
-  index++;
-  const song = arr[index];
-  const previousSong = arr[index - 1];
-  console.log("check: GO TO NEXT SONG LOGGED");
-  audioPlayer.src = `${song.linktosong}`;
-  // ?? The following keeps erasing the result innerHTML even though it's set to be launched 5 seconds later
-  // with set timeout line 205
-  result.innerHTML = "";
-  // ?? The following doesnt print title and artist and erases points
-  // playlist.innerHTML += '<p class = "song-artist"> ${previousSong.artist}</p>
-  // <p class = "song-title"> ${previousSong.title}</p>';
-}
+  setTimeout(function () {
+    console.log("check: GO TO NEXT SONG LOGGED");
+    index++;
+    const song = arr[index];
+    const previousSong = arr[index - 1];
+    audioPlayer.src = `${song.linktosong}`;
+    listOfSongs.innerHTML += `<p id = "song-artist"> ${previousSong.artist}</p>
+    <p id = "song-title"> ${previousSong.title}</p>`;
+    result.textContent = "";
+    letterHint.innerHTML = "";
+    videoHint.innerHTML = "";
+    answer.value = "";
+  },2000);
+};
 
 // Define the function that goes to the next level (increments level, toggles classList for header,
 // changes autoplay duration)
@@ -166,11 +211,58 @@ function nextSong(arr) {
 function goToNextLevel() {
   console.log("check: GO TO NEXT LEVEL LOGGED");
   level++;
-  submitBtn.innerHTML = "Next level";
   categoryHeader.classList.toggle(`level${level}`);
-  timer.resetTimer();
+  gameDuration = levels[level].gameTime;
   levelAutoplayDuration = levels[level].autoplayDuration;
-  timer.startTimer(printTime());
+
+  // ?? When going to next level the timer doesnt reset and restart
+  timer.resetTimer(gameDuration);
+  timer.startTimer(printTime,goToNextLevel,goToResultsPage);
+
+}
+
+// Define the function that launches gotonextlevel when timer at 0
+// ?? The following isnt working!!
+
+// function endOfLevel() {
+//   if(timer.currentTime===0) {
+//     goToNextLevel();
+//   }
+// };
+
+// endOfLevel(); 
+// au tout debut du script donc m'interroger sur a quel moment je veux appeler endoflevel
+
+// // Define the function that goes to next song or next level
+
+// function next(arr) {
+//   setTimeout(() => {
+//     if (index === arr.length - 1) {
+//       goToNextLevel(arr);
+//     } else nextSong(arr);
+//   }, 2000);
+// }
+
+// Define the function that will decide what to do when wrong answer
+function wrongAnswer() {
+  if (nbOfLives === 0) {
+    if (level === levels.length-1) {
+      console.log("gameover");
+      alert("GAME OVER");
+      goToResultsPage();
+    } else {
+      result.textContent = `You're out of lives for the game, moving to the next song!`;
+      nextSong(arr);
+    }
+  } else {
+    result.textContent = `Try again!`;
+    nbOfLives--;
+    for (let i=0;i<nbOfLives;i++){
+      lives.innerHTML += `<i class="fa fa-heart fa-2x"></i>`;
+      console.log(i);
+    }
+    answer.value = "";
+  }
 }
 
 // Define the function that checks the answers and prints the result and nuber of points
@@ -186,32 +278,28 @@ function checkAnswers(arr) {
 
   // IF HAS BOTH ARTIST AND TITLE GIVES 2POINTS
   if (answer.value.includes(artist) && answer.value.includes(title)) {
-    result.innerHTML += `<p> You won 2 points!</p>`;
-    nbOfPoints += 2;
-    if (index + 1 === arr.length) {
-      goToNextLevel();
-    } else setTimeout(nextSong(arr), 5000);
+    result.textContent = `You won 2 points!`;
+    updatePoints(2);
+    nextSong(arr);
   }
 
   // IF HAS EITHER ARTIST OR TITLE GIVES 1POINT
   else if (answer.value.includes(artist) || answer.value.includes(title)) {
-    result.innerHTML = `<p> You won 1 point!</p>`;
+    console.log("the result should log for 1 point")
+    result.textContent = `You won 1 point!`;
     console.log(result);
-    nbOfPoints++;
-    if (index + 1 === arr.length) {
-      goToNextLevel();
-    } else setTimeout(nextSong(arr), 5000);
+    updatePoints(1);
+    nextSong(arr);
   }
 
   // IF HAS NEITHER ARTIST NOR TITLE CAN TRY AGAIN
   else {
-    result.innerHTML += `<p> Try again!</p>`;
-    answer.value = "";
+    wrongAnswer();
   }
-  points.textContent = `${nbOfPoints} points`;
 }
 
 // Track the clicks on the submit button to launch the function that checks answers (above)
+// How to duplicate the following to happen when pressing enter in the answer bar?
 
 submitBtn.onclick = (event) => {
   event.preventDefault();
@@ -219,3 +307,78 @@ submitBtn.onclick = (event) => {
   // !! The following parameter needs to be changed once the spotify playlists are imported
   checkAnswers(songArray);
 };
+
+
+// Define the function that show 3 first letters of artist name
+
+function printLetterHint(arr) {
+  const song = arr[index];
+  const artist = song.artist;
+  letterHint.innerHTML = `<p>The first 3 letters of the artist name are</p>
+  <p id="hint-style">${artist[0]}${artist[1]}${artist[2]}</p>`;
+}
+
+// Define the function that shows 10 seconds of the videoclip
+function showVideoHint(arr) {
+  const song = arr[index];
+  videoHint.innerHTML = `<video id="video-player" controls width="250" autoplay>
+<source src=${song.linktovideoclip}
+        type="video/mp4">
+Sorry, your browser doesn't support embedded videos.
+</video>`;
+}
+
+function autoplayVideoHint() {
+  setTimeout(function () {
+    videoPlayer.play();
+
+    setTimeout(function () {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+    }, 10000);
+  }, 1000);
+}
+
+// Define the function that updates the nb of points
+function updatePoints(x) {
+  console.log("points are gonna be updated by", x);
+  nbOfPoints += x;
+  points.textContent = `${nbOfPoints} points`;
+}
+
+// Displays the hints and substracts 1 point when clicking on hint buttons
+
+letterHintBtn.onclick = () => {
+  console.log("The letter hint btn was clicked");
+  printLetterHint(songArray);
+  updatePoints(-1);
+};
+videoHintBtn.onclick = () => {
+  console.log("The video hint btn was clicked");
+  showVideoHint(songArray);
+  autoplayVideoHint();
+  updatePoints(-1);
+};
+
+// // Define the function that goes to the results page
+
+// // ?? How to write the following?
+function goToResultsPage() {
+axios
+    .get("results.html")
+    .then((response) => {
+    main.innerHTML=response;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
+// //  Define the function that will print results on the result page
+
+// // ?? The following isn't working
+
+// function displayResults() {
+//       totalPoints.textContent=${nbOfPoints};
+//   }
+//   displayResults();

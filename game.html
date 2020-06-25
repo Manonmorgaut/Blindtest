@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blind test</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.1/qs.min.js"></script>
     <script src="./game.js" type="module"></script>
   </head>
   <body>
@@ -17,10 +18,16 @@
         <p>Level 1</p>
       </div>
     </header>
-    <div id="timerOutput">0</div>
+    <div id="lives">
+      <i class="fa fa-heart fa-2x"></i>
+      <i class="fa fa-heart fa-2x"></i>
+      <i class="fa fa-heart fa-2x"></i>
+      <i class="fa fa-heart fa-2x"></i>
+    </div>
+    <div id="timerOutput"></div>
     <div id="player">
       <audio id="audio-player" controls autoplay>
-        <source src="/Songs/beyonce-crazy-in-love-ft-jay-z.mp3"" type="audio/mpeg" />
+        <!-- <source src="/Songs/beyonce-crazy-in-love-ft-jay-z.mp3" type="audio/mpeg" /> -->
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -37,16 +44,28 @@
         </div>
       </div>
     </form>
-    <div id="result"></div>
+    <div id="results">
+      <p id="result"></p>
+    </div>
     <section id="articles">
       <article id="playlist">
         <h1>Just listened to</h1>
-        <!-- <p id="list-of-songs"></p> -->
+        <div id="list-of-songs"></div>
       </article>
       <article id="points">
         <h1>Points</h1>
-        <p id="point-count"></p>
+        <div id="point-count"></div>
       </article>
+    </section>
+    <section id="hintsection">
+      <div class="hint">
+      <button id="letter-hint-button">Letter hint</button>
+      <div id="letter-hint"></div>
+    </div>
+    <div class="hint">
+      <button id="video-hint-button">Video clip hint</button>
+      <div id="video-hint"></div>
+    </div>
     </section>
   </body>
 </html>

@@ -3,6 +3,13 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
+  box-sizing:border-box;
+  font-weight:200;
+  
+}
+
+body {
+  background-color: #FFEBE7;
 }
 
 header {
@@ -25,16 +32,47 @@ header div {
 }
 
 #category-name {
-  background-color: lightpink;
+  background-color: #d81159;
 }
-
 #level {
-  background-color: lightblue;
+  background-color: #e1e6f4;
 }
 
-/* #audio-player {
+#level .level1{
+  background-color: #e1e6f4;
+}
+
+#level .level2 {
+  background-color: #869cd5
+}
+#level .level3 {
+  background-color: #3A59A6
+}
+#level .level4 {
+  background-color: #304988
+}
+
+#audio-player {
   visibility: hidden;
+}
+
+#timer {
+  text-align:center;
+  font-size:50px;
+  color: #d81159;
+}
+/* 
+#lives {
+  background-color:red;
+  height:100px;
 } */
+
+/* ??WHY IS THE FOLLOWING NOT SHOWING */
+.fa-heart{
+  color:white;
+  padding:2px;
+  margin:10px;
+}
 
 .type-in {
   display: flex;
@@ -65,9 +103,17 @@ header div {
   border: none;
 }
 
+#submit-button .next-level {
+  /* ?? Why is the following not changing the background color of the button */
+  background-color: #d81159;
+}
+
 article {
-  text-align: center;
   margin:20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 article h1 {
@@ -75,10 +121,6 @@ article h1 {
 }
 
 article p {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 200px;
-  height: 50px;
   font-size:15px;
   color:black;
 }
@@ -87,7 +129,6 @@ article p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 #list-of-songs {
@@ -97,6 +138,108 @@ article p {
 #articles {
     display:flex;
     flex-direction:row;
+    justify-content: space-evenly;
+    align-items:center;
+}
+
+
+#hintsection {
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+}
+
+#hintsection button {
+    margin:20px;
+    height:30px;
+    width:100px;
+}
+
+hint {
+    display:flex;
+    flex-direction:column;
     justify-content: center;
     align-items:center;
+}
+
+#song-artist {
+  text-align:left;
+  font-weight:300;
+  color:darkblue;
+}
+
+#song-title {
+  text-align:left;
+  font-weight:100;
+  color:blue;
+}
+
+#list-of-songs {
+  border:1px solid black;
+  border-radius: 5px;
+  width:250px;
+  min-height: 50px;
+  padding:5px;
+}
+
+#point-count {
+  border:1px solid black;
+  border-radius: 5px;
+  width:250px;
+  padding:5px;
+  height:50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:20px;
+  font-weight:300;
+  color:#d81159;
+}
+
+ .hint {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+#letter-hint {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+#hint-style {
+  font-size:50px;
+  font-weight:100;
+  color:#d81159;
+}
+
+.hint button {
+  background-color:#d81159;
+  border:1px solid #d81159;
+  border-radius:2px;
+  color:white;
+  /* Why is the following not changing the size of the buttons? */
+  /* width:70px;
+  height:15px; */
+}
+
+#video-player {
+  height:200px;
+}
+
+#results {
+  /* display:flex;
+  justify-content:center;
+  align-items:center; */
+  background-color: #d81159;
+  color:white;
+  font-weight:200;
+  width:600px;
+  padding:8px;
+  /* margin-left:375px; */
+  border-radius: 3px;
+  opacity:0.5;
 }
