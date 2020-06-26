@@ -1,13 +1,4 @@
-// import { timerBar } from "./timerbar";
 
-// import { Timer } from "./timer-class.js";
-// import { songArray } from "./arrays.js";
-// import { levels } from "./arrays.js";
-// import { pageLoader } from "./pageloader.js";
-
-
-
-// const main= document.getElementById("main");
 
 const quotesArray = [
   {
@@ -296,35 +287,10 @@ function goToNextLevel() {
   levelHeader.innerHTML=`<p>Level ${level+1}</p>`
   gameDuration = levels[level].gameTime;
   levelAutoplayDuration = levels[level].autoplayDuration;
-
-  // ?? When going to next level the timer doesnt reset and restart
   timer.resetTimer(gameDuration);
   timer.startTimer(printTime,goToNextLevel,goToResultsPage);
 
 }
-
-// Define the function that launches gotonextlevel when timer at 0
-// ?? The following isnt working!!
-
-// function endOfLevel() {
-//   if(timer.currentTime===0) {
-//     goToNextLevel();
-//   }
-// };
-
-// endOfLevel(); 
-// au tout debut du script donc m'interroger sur a quel moment je veux appeler endoflevel
-
-// // Define the function that goes to next song or next level
-
-// function next(arr) {
-//   setTimeout(() => {
-//     if (index === arr.length - 1) {
-//       goToNextLevel(arr);
-//     } else nextSong(arr);
-//   }, 2000);
-// }
-
 
 // Define the function that will decide what to do when wrong answer
 function wrongAnswer(arr) {
@@ -337,7 +303,7 @@ function wrongAnswer(arr) {
     nbOfLives--;
     // ?? The following is not showing at all
     for (let i=0;i<nbOfLives;i++){
-      lives.innerHTML += `<i class="fa fa-heart fa-2x"></i>`;
+      lives.innerHTML += `<i class="fa fa-heart"></i>`;
       console.log(i);
     }
     answer.value = "";
@@ -468,7 +434,7 @@ gameOver.innerHTML=`<p> Your final score is </p>
   // Call game over function
 // ?? Why is this not working? Appeler au moment opportun quand joueur intervient
 
-printGameOver();
+// printGameOver();
 
 // //  Define the function that will print results on the result page
 
