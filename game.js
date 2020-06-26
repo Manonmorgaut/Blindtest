@@ -428,7 +428,7 @@ function goToResultsPage() {
 console.log('This should go to the results page');
 gameOver.style.display="block";
 gameOver.innerHTML=`<p> Your final score is </p>
-<p>${nbofpoints} points </p>`
+<p>${nbofpoints} points</p>`
   }
 
   // Call game over function

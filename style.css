@@ -230,6 +230,7 @@ hint {
   z-index:9;
   padding-top:500px;
   display:none;
+  text-align:center;
 }
 
 #past-song {
