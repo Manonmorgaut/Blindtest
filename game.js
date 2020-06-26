@@ -303,7 +303,7 @@ function wrongAnswer(arr) {
     nbOfLives--;
     // ?? The following is not showing at all
     for (let i=0;i<nbOfLives;i++){
-      lives.innerHTML += `<i class="fa fa-heart"></i>`;
+      lives.innerHTML = `<i class="fa fa-heart fa-2x"></i>`;
       console.log(i);
     }
     answer.value = "";
@@ -394,6 +394,8 @@ function updatePoints(x) {
   console.log("points are gonna be updated by", x);
   nbOfPoints += x;
   points.textContent = `${nbOfPoints} points`;
+  console.log("is true?");
+  printGameOver();
 }
 
 // Displays the hints and substracts 1 point when clicking on hint buttons
@@ -430,17 +432,3 @@ gameOver.style.display="block";
 gameOver.innerHTML=`<p> Your final score is </p>
 <p>${nbofpoints} points</p>`
   }
-
-  // Call game over function
-// ?? Why is this not working? Appeler au moment opportun quand joueur intervient
-
-// printGameOver();
-
-// //  Define the function that will print results on the result page
-
-// // ?? The following isn't working
-
-// function displayResults() {
-//       totalPoints.textContent=${nbOfPoints};
-//   }
-//   displayResults();

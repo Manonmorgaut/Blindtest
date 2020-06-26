@@ -221,7 +221,7 @@ hint {
 #gameover {
   background-color:#d81159;
   color:#FFEBE7;
-  font-size:200px;
+  font-size:150px;
   top:0;
   left:0;
   right:0;
@@ -231,6 +231,17 @@ hint {
   padding-top:500px;
   display:none;
   text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#gameover p {
+  font-size:50px;
+  color:white;
+  text-align:center;
+
+
 }
 
 #past-song {
