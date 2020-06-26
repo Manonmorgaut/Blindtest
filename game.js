@@ -77,7 +77,7 @@ class Timer {
   }
   startTimer(callback, callback2,callback3) {
     this.intervalId = setInterval(() => {
-      console.log(this.currentTime);
+      // console.log(this.currentTime);
       this.currentTime--;
       callback();
       if (this.currentTime === 0) 
@@ -115,49 +115,49 @@ const songArray = [
   {
     title: "Smells like teen spirit",
     artist: "Nirvana",
-    // linktosong: "./Songs/nirvana-smells-like-teen-spirit-official-music-video.mp3",
+    linktosong: "./Songs/nirvana-smells-like-teen-spirit-official-music-video.mp3",
     linktovideoclip: "./Video clips/nirvana-smells-like-teen-spirit-official-music-video.mp4",
   },
   {
     title: "Californication",
     artist: "Red hot chili peppers",
-    // linktosong: "./Songs/red-hot-chili-peppers-californication-official-music-video.mp3",
+    linktosong: "./Songs/red-hot-chili-peppers-californication-official-music-video.mp3",
     linktovideoclip: "./Video clips/red-hot-chili-peppers-californication-official-music-video.mp4",
   },
   {
     title: "The house of the rising sun",
     artist: "The animals",
-    // linktosong: "./Songs/the-animals-the-house-of-the-rising-sun-1964-high-quality.mp3",
+    linktosong: "./Songs/the-animals-the-house-of-the-rising-sun-1964-high-quality.mp3",
     linktovideoclip: "./Video clips/the-animals-the-house-of-the-rising-sun-1964-high-quality.mp4",
   },
   {
     title: "Sultans of swing",
     artist: "Dire straits",
-    // linktosong: "./Songs/sultans-of-swing.mp3",
+    linktosong: "./Songs/sultans-of-swing.mp3",
     linktovideoclip: "./Video clips/dire-straits-sultans-of-swing.mp4",
   },
   {
     title: "Start me up",
     artist: "Rolling stones",
-    // linktosong: "./Songs/the-rolling-stones-start-me-up-official-promo.mp3",
+    linktosong: "./Songs/the-rolling-stones-start-me-up-official-promo.mp3",
     linktovideoclip: "./Video clips/the-rolling-stones-start-me-up-official-promo.mp4",
   },
   {
     title: "London calling",
     artist: "The clash",
-    // linktosong: "./Songs/the-clash-london-calling-official-video.mp3",
+    linktosong: "./Songs/the-clash-london-calling-official-video.mp3",
     linktovideoclip: "./Video clips/the-clash-london-calling-official-video.mp4",
   },
   {
     title: "Don't stop believin",
     artist: "The journey",
-    // linktosong: "./Songs/journey-dont-stop-believin-audio.mp3",
+    linktosong: "./Songs/journey-dont-stop-believin-audio.mp3",
     linktovideoclip: "./Video clips/journey-dont-stop-believin-live-in-houston.mp4",
   },
   {
     title: "Rich girls",
     artist: "The virgin",
-    // linktosong: "./Songs/the-virgins-rich-girls-official-video.mp3",
+    linktosong: "./Songs/the-virgins-rich-girls-official-video.mp3",
     linktovideoclip: "./Video clips/the-virgins-rich-girls-official-video.mp4",
   }
 ];
@@ -229,7 +229,7 @@ function printTime() {
   let seconds = timer.getSeconds();
   minutes = timer.twoDigitsNumber(minutes);
   seconds = timer.twoDigitsNumber(seconds);
-  console.log(minutes, seconds);
+  // console.log(minutes, seconds);
   timerOutput.innerHTML = `<p id="timer">Time left: ${minutes}:${seconds}!</p>`;
 }
 
@@ -294,7 +294,7 @@ function goToNextLevel() {
 
 // Define the function that will decide what to do when wrong answer
 function wrongAnswer(arr) {
-  if (nbOfLives === 0) {
+  if (nbOfLives === 1) {
       result.textContent = `You're out of lives for the game, moving to the next song!`;
       nextSong(arr);
     }
@@ -302,8 +302,9 @@ function wrongAnswer(arr) {
     result.textContent = `Try again!`;
     nbOfLives--;
     // ?? The following is not showing at all
+    lives.innerHTML="";
     for (let i=0;i<nbOfLives;i++){
-      lives.innerHTML = `<i class="fa fa-heart fa-2x"></i>`;
+      lives.innerHTML += `<i class="fa fa-heart fa-2x"></i>`;
       console.log(i);
     }
     answer.value = "";
@@ -425,10 +426,9 @@ function printGameOver() {
 
 // // Define the function that goes to the results page
 
-// // ?? How to write the following?
 function goToResultsPage() {
 console.log('This should go to the results page');
 gameOver.style.display="block";
 gameOver.innerHTML=`<p> Your final score is </p>
 <p>${nbofpoints} points</p>`
-  }
+  };

@@ -231,17 +231,15 @@ hint {
   padding-top:500px;
   display:none;
   text-align:center;
-  display:flex;
-  justify-content:center;
-  align-items:center;
 }
 
 #gameover p {
   font-size:50px;
   color:white;
   text-align:center;
-
-
+  position:absolute;
+  top:200px;
+  left:600px;
 }
 
 #past-song {
