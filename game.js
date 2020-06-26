@@ -168,7 +168,7 @@ const levels = [
     levelName: "",
     color: "blue",
     autoplayDuration: 20000,
-    gameTime: 10,
+    gameTime: 30,
     textHint: true,
     videoHint: true,
     nbOfLives: 4,
@@ -178,7 +178,7 @@ const levels = [
     levelName: "",
     color: "green",
     autoplayDuration: 10000,
-    gameTime: 10,
+    gameTime: 20,
     textHint: false,
     videoHint: true,
     nbOfLives: 3,
@@ -420,6 +420,8 @@ function printGameOver() {
   if(nbOfPoints<0) {
     console.log("gameover");
     alert("GAME OVER");
+    gameOver.innerHTML+=`<p> Your final score is </p>
+<p>${nbofpoints} points</p>`;
     goToResultsPage();
   }
 }
@@ -429,6 +431,4 @@ function printGameOver() {
 function goToResultsPage() {
 console.log('This should go to the results page');
 gameOver.style.display="block";
-gameOver.innerHTML=`<p> Your final score is </p>
-<p>${nbofpoints} points</p>`
   };
